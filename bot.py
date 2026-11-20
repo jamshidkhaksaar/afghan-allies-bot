@@ -140,7 +140,8 @@ def call_gemini(system_prompt, user_prompt):
     for model in MODELS:
         url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
         try:
-            r = requests.post(url, params={"key": key}, json=body, timeout=60)
+            # Key goes in a header, never the URL, so error messages can't expose it.
+            r = requests.post(url, headers={"x-goog-api-key": key}, json=body, timeout=60)
             r.raise_for_status()
             parts = r.json()["candidates"][0]["content"]["parts"]
             return "".join(p.get("text", "") for p in parts if not p.get("thought")).strip()
