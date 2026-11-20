@@ -1,0 +1,58 @@
+name: Afghan Allies bot
+
+on:
+  schedule:
+    - cron: "17 * * * *"   # every hour at :17 (the bot decides if it's time to post)
+  workflow_dispatch:
+    inputs:
+      post_now:
+        description: "Post right now, ignoring the schedule"
+        type: boolean
+        default: false
+
+concurrency:
+  group: bot
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Run bot
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          X_API_KEY: ${{ secrets.X_API_KEY }}
+          X_API_SECRET: ${{ secrets.X_API_SECRET }}
+          X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
+          X_ACCESS_TOKEN_SECRET: ${{ secrets.X_ACCESS_TOKEN_SECRET }}
+          X_POSTING_ENABLED: ${{ vars.X_POSTING_ENABLED }}
+        run: |
+          if [ "${{ inputs.post_now }}" = "true" ]; then
+            python bot.py --now
+          else
+            python bot.py
+          fi
+
+      - name: Save schedule and history
+        if: always()
+        run: |
+          git config user.name "allies-bot"
+          git config user.email "allies-bot@users.noreply.github.com"
+          git add state.json history.json 2>/dev/null || true
+          if ! git diff --cached --quiet; then
+            git commit -m "bot: update schedule/history"
+            git push
+          fi

@@ -1,0 +1,35 @@
+{
+  "topics": [
+    "Afghan interpreters who served next to U.S. troops and are still waiting",
+    "the SIV application process and how long families wait",
+    "allies in hiding inside Afghanistan who fear for their lives",
+    "Afghans stuck in third countries waiting on P-1 or P-2 processing",
+    "the moral promise America made to the people who helped it",
+    "U.S. veterans who are still fighting to bring their interpreters to safety",
+    "families separated, with some members safe and others left behind",
+    "evacuated Afghans on temporary parole who need a permanent path",
+    "the Afghan Adjustment Act and why it matters",
+    "Afghan women who worked on U.S.-funded programs and now face danger",
+    "what keeping our word means for future partners around the world",
+    "the paperwork and bureaucracy that keeps eligible allies in limbo",
+    "Afghan allies already rebuilding lives in the U.S. and contributing to their communities",
+    "children of Afghan allies who have spent years of their lives waiting",
+    "asking people to call or write to their members of Congress",
+    "the gap between public sympathy in 2021 and attention today",
+    "drivers, guards, engineers, and local staff whose service is often forgotten",
+    "hope and resilience in the Afghan allies community",
+    "myths vs facts about who Afghan allies are",
+    "why this is not a partisan issue"
+  ],
+  "formats": [
+    {"name": "plain statement", "how": "one or two honest sentences stating a truth plainly", "weight": 3},
+    {"name": "question", "how": "ask the reader a sincere question that makes them think", "weight": 2},
+    {"name": "call to action", "how": "a concrete, simple action the reader can take today (no links, no @mentions)", "weight": 2},
+    {"name": "fact plus meaning", "how": "one fact from the FACTS list, then a short line on why it matters", "weight": 2},
+    {"name": "personal reflection", "how": "first person feeling or thought, without inventing specific events", "weight": 2},
+    {"name": "contrast", "how": "set two things side by side, e.g. what was promised vs what happened", "weight": 1},
+    {"name": "gratitude", "how": "thank a group that helps (veterans, volunteers, resettlement workers) and say why", "weight": 1},
+    {"name": "myth vs fact", "how": "correct one common misunderstanding in a calm tone", "weight": 1},
+    {"name": "one-liner", "how": "a single short, memorable line", "weight": 2}
+  ]
+}
